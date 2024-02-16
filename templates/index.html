@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakersBnB</title>
+        <!--
+            Head to https://github.com/makersacademy/web-applications-in-python/blob/main/pills/loading_css_or_static_files.md
+            If you're wondering how the CSS file below is being loaded.
+        -->
+        <link rel="stylesheet" href="/static/style.css" >
+        <style>
+            /* CSS for the login and register buttons */
+            .login-button, .register-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+    
+            .login-button {
+                background-color: #3498db;
+                color: #fff;
+                margin-right: 125px;
+            }
+    
+            .register-button {
+                background-color: #27ae60;
+                color: #fff;
+            }
+    
+            .login-button:hover, .register-button:hover {
+                background-color: #258cd1;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/login" class="login-button">Login</a>
+        <a href="/register" class="register-button">Register</a>
+        <h1> MakersBNB </h1>
+        <h2> We hope you enjoy your stay </h2>
+        <!-- <p> this will be a table of places listed </p> <br> -->
+        <!-- <p> These links will only be accesible when logged in </p> -->
+        <a href="/add-a-space" class="adding-a-space"> Add Your Space</a> <br>
+        <a href="/booking-requests" class="booking-requests"> Manage Your Booking Requests</a>
+        <ul>
+            {% for space in spaces %}
+                <div>
+                    
+                    <p>{{space.description}}</p>
+                        <a href="{{ url_for('get_individual_space', id=space.id) }}">{{space.name}}</a>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
